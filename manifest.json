@@ -1,0 +1,15 @@
+{
+  "short_name": "Gestão de Tempo",
+  "name": "Gestão de Tempo",
+  "icons": [
+    {
+      "src": "",
+      "sizes": "",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
