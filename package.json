@@ -1,0 +1,19 @@
+{
+  "name": "life-management",
+  "version": "1.0.0",
+  "description": "Pequeno projeto pessoal - João Marcos",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoswitcel/life-management.git"
+  },
+  "author": "João Marcos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoswitcel/life-management/issues"
+  },
+  "homepage": "https://github.com/marcoswitcel/life-management#readme"
+}
