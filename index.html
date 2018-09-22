@@ -7,24 +7,34 @@
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="style/style.css">
     <!-- @TODO implement 'fetch' de html imports -->
     <template id="widgetDespesa">
         <div data-type="despesa">
             <input type="number" name="valor">
             <button onclick="add(this)">Despesa</button>
-            <button onclick="changeWidget('TelaInicial')">Volta</button>
+            <button class="back-button" onclick="changeWidget('TelaInicial')">Volta</button>
         </div>
     </template>
     <template id="widgetReceita">
         <div data-type="receita">
             <input type="number" name="valor">
             <button onclick="add(this)">Receita</button>
-            <button onclick="changeWidget('TelaInicial')">Volta</button>
+            <button class="back-button" onclick="changeWidget('TelaInicial')">Volta</button>
         </div>
     </template>
     <template id="widgetTelaInicial">
         <button onclick="changeWidget('Despesa')">Adc. Despesa</button>
         <button onclick="changeWidget('Receita')">Adc. Receita</button>
+        <button onclick="changeWidget('Consulta')">Consulta</button>
+    </template>
+    <!-- Consulta de entradas por mês pendente -->
+    <template id="widgetConsulta">
+        <button class="back-button" onclick="changeWidget('TelaInicial')">Volta</button>
+        <!-- Executa uma chamada -->
+        <script>
+            CashFlow.findAll(processaDados);
+        </script>
     </template>
     <script src="/js/index.js"></script>
 </head>

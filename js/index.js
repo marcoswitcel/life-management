@@ -34,7 +34,45 @@ CashFlow.save = function CashFlowSave(cashFlowEntry) {
     var request = objectStore.add(cashFlowEntry);
     request.onsuccess = console.log.bind(console); // eslint-disable-line no-console
 };
+CashFlow.findAll = function CashFlowFindAll(callback) {
+    var objectStore = window.DB.transaction("CashFlow").objectStore("CashFlow");
+
+    var resultado = [];
+
+    objectStore.openCursor().onsuccess = function(event) {
+        var cursor = event.target.result;
+        if (cursor) {
+            resultado.push(cursor.value);
+            cursor.continue();
+        } else {
+            callback(resultado);
+        }
+    };
+};
 /* End */
+function processaDados(array) { // eslint-disable-line no-unused-vars
+
+    var despesas = [],
+        receitas = [];
+
+    var sum = function sum(list) {
+        var resultado = 0;
+        list.forEach(function (x) {
+            resultado += x.valor;
+        });
+        return resultado;
+    };
+
+    for (var i = array.length; --i;) {
+        if (array[i].tipo == "despesa") {
+            despesas.push(array[i]);
+        } else {
+            receitas.push(array[i]);
+        }
+    }
+    var texto = "Despesas: " + sum(despesas) + " -- Receitas: " + sum(receitas);
+    app.appendChild(document.createTextNode(texto)); // eslint-disable-line no-undef
+}
 
 /* Carrega DB ou seta se for o primeiro loading */
 (function IndexDBSetup(globalScope, console) {
@@ -89,8 +127,8 @@ CashFlow.save = function CashFlowSave(cashFlowEntry) {
 
 function changeWidget(name) { // eslint-disable-line no-unused-vars
     /* 'app' elemento div que contém toda aplicação */
-    while (app.firstChild) {
-        app.removeChild(app.firstChild)
+    while (app.firstChild) { //eslint-disable-line no-undef
+        app.removeChild(app.firstChild); //eslint-disable-line no-undef
     }
     app.appendChild( // eslint-disable-line no-undef
         window["widget"+name].content.cloneNode(true)
